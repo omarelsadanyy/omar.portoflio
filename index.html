@@ -9,6 +9,13 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* --- Fix for content overlapping fixed navbar --- */
+    .hero {
+      /* Pushes the content down to prevent it from being hidden by the fixed header. */
+      /* Adjust this value if it doesn't perfectly match your navbar's height. */
+      padding-top: 70px;
+    }
+
     /* --- Toast Notification Styles --- */
     #toast-notification {
       visibility: hidden;
