@@ -1,18 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abdulrahman Taghyan | ML Engineer & Data Science Enthusiast</title>
+  <title>Omar Elsadany | Mobile Developer</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* --- Toast Notification Styles --- */
+    #toast-notification {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #4CAF50;
+      /* Green for success */
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+      padding: 16px;
+      position: fixed;
+      /* Increased z-index to ensure it appears on top of the navbar */
+      z-index: 9999;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 30px;
+      font-size: 17px;
+      opacity: 0;
+      transition: opacity 0.5s, bottom 0.5s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #toast-notification.show {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    #toast-notification.error {
+      background-color: #f44336;
+      /* Red for error */
+    }
+
+    #toast-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      margin-left: 15px;
+      opacity: 0.8;
+    }
+
+    #toast-close:hover {
+      opacity: 1;
+    }
+
+    /* --- Responsive Toast for Desktop --- */
+    @media (min-width: 768px) {
+      #toast-notification {
+        /* Move to top-right on larger screens */
+        top: 20px;
+        right: 20px;
+        bottom: auto;
+        left: auto;
+        /* Adjust transform for a slide-in from the right */
+        transform: translateX(120%);
+        transition: opacity 0.5s, transform 0.5s;
+      }
+
+      #toast-notification.show {
+        /* Animate into view from the right */
+        transform: translateX(0);
+      }
+    }
+  </style>
 </head>
+
 <body>
   <!-- Header -->
   <header>
     <nav>
-      <div class="logo">Abdulrahman Taghyan</div>
+      <div class="logo">Omar Elsadany</div>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -27,8 +99,10 @@
   <section id="home" class="hero">
     <div class="hero-content">
       <div class="hero-text">
-        <h1>AI & Data Science <span class="gradient-text">Enthusiast</span></h1>
-        <p>Transforming complex data into actionable insights through cutting-edge machine learning, deep learning, and artificial intelligence solutions. Passionate about building intelligent systems that make a real-world impact.</p>
+        <h1>Mobile Developer <span class="gradient-text">Enthusiast</span></h1>
+        <p>Crafting seamless and high-performance mobile experiences through innovative Android, iOS, and cross-platform
+          solutions. Passionate about building intuitive applications that enhance everyday life and create real-world
+          impact.</p>
         <div class="cta-buttons">
           <a href="#projects" class="btn btn-primary">View My Work</a>
           <a href="#contact" class="btn btn-secondary">Get In Touch</a>
@@ -37,7 +111,7 @@
       <div class="hero-image">
         <div class="profile-container">
           <div class="profile-image">
-            <img src="https://i.postimg.cc/rFgXR0K3/Whats-App-Image-2025-08-22-at-13-41-00-02895edf.jpg" alt="Abdulrahman Taghyan">
+            <img src="https://i.postimg.cc/ZnYCpcgX/IMG-1288.jpg" alt="Omar Elsadany">
           </div>
         </div>
       </div>
@@ -49,13 +123,21 @@
     <h2 class="section-title">About Me</h2>
     <div class="about-content">
       <div class="about-image">
-        <img src="https://i.postimg.cc/rFgXR0K3/Whats-App-Image-2025-08-22-at-13-41-00-02895edf.jpg" alt="Abdulrahman Taghyan">
+        <img src="https://i.postimg.cc/ZnYCpcgX/IMG-1288.jpg"
+          alt="Omar Elsadany">
       </div>
       <div class="about-text">
-        <h3>Dedicated Data Scientist & AI Engineer</h3>
-        <p>With a strong foundation in mathematics and computer science, I specialize in developing sophisticated machine learning models and AI-driven solutions. My expertise spans the entire data science pipeline, from data preprocessing and analysis to model deployment and optimization.</p>
-        <p>I'm passionate about leveraging artificial intelligence to solve complex real-world problems, particularly in areas like natural language processing, computer vision, and generative AI. My approach combines technical excellence with creative problem-solving to deliver innovative solutions that drive business value.</p>
-        <p>When I'm not coding or training models, you'll find me exploring the latest developments in AI research, contributing to open-source projects, and sharing knowledge with the developer community.</p>
+        <h3>Dedicated Mobile Developer</h3>
+        <p>With a strong foundation in software engineering and mobile technologies, I specialize in building
+          high-quality Flutter and Android applications that deliver seamless user experiences. My expertise spans the
+          entire mobile development lifecycle, from UI/UX design and state management to API integration and deployment.
+        </p>
+        <p>I'm passionate about creating intuitive and scalable mobile solutions that solve real-world problems,
+          particularly in areas like e-commerce, productivity, and lifestyle applications. My approach combines clean
+          architecture, performance optimization, and creative problem-solving to deliver apps that users love.</p>
+        <p>When I'm not coding or exploring new frameworks, you'll find me contributing to open-source projects, staying
+          up to date with the latest mobile development trends, and sharing knowledge with the developer community.</p>
+
       </div>
     </div>
   </section>
@@ -65,69 +147,92 @@
     <h2 class="section-title">Technical Expertise</h2>
     <div class="skills-container">
       <div class="skill-category">
-        <h3><i class="fas fa-code"></i> Programming Languages</h3>
+        <h3><i class="fas fa-code"></i> Languages</h3>
         <div class="skill-list">
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">C++</span>
-          <span class="skill-tag">C#</span>
-          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Dart</span>
+          <span class="skill-tag">Kotlin</span>
+          <span class="skill-tag">Java</span>
         </div>
       </div>
-      
+
       <div class="skill-category">
-        <h3><i class="fas fa-robot"></i> AI & Machine Learning</h3>
+        <h3><i class="fas fa-mobile-alt"></i> Mobile Development</h3>
         <div class="skill-list">
-          <span class="skill-tag">Machine Learning</span>
-          <span class="skill-tag">Deep Learning</span>
-          <span class="skill-tag">Neural Networks</span>
-          <span class="skill-tag">Generative AI</span>
-          <span class="skill-tag">Model Optimization</span>
+          <span class="skill-tag">Flutter</span>
+          <span class="skill-tag">Android Native</span>
+          <span class="skill-tag">Responsive Design</span>
+          <span class="skill-tag">Animations</span>
         </div>
       </div>
-      
+
       <div class="skill-category">
-        <h3><i class="fas fa-eye"></i> Computer Vision & NLP</h3>
+        <h3><i class="fas fa-sitemap"></i> Architecture & Practices</h3>
         <div class="skill-list">
-          <span class="skill-tag">Computer Vision</span>
-          <span class="skill-tag">Natural Language Processing</span>
-          <span class="skill-tag">OpenCV</span>
-          <span class="skill-tag">Transformers</span>
-          <span class="skill-tag">Sentiment Analysis</span>
+          <span class="skill-tag">Clean Architecture</span>
+          <span class="skill-tag">MVVM</span>
+          <span class="skill-tag">MVI</span>
+          <span class="skill-tag">OOP</span>
+          <span class="skill-tag">Clean Code</span>
+          <span class="skill-tag">Dependency Injection</span>
+          <span class="skill-tag">SDLC</span>
         </div>
       </div>
-      
+
       <div class="skill-category">
-        <h3><i class="fas fa-chart-line"></i> Data Science & Analytics</h3>
+        <h3><i class="fas fa-project-diagram"></i> State Management</h3>
         <div class="skill-list">
-          <span class="skill-tag">Data Analysis</span>
-          <span class="skill-tag">Data Preprocessing</span>
-          <span class="skill-tag">Data Visualization</span>
-          <span class="skill-tag">Statistical Modeling</span>
-          <span class="skill-tag">Feature Engineering</span>
+          <span class="skill-tag">Bloc</span>
+          <span class="skill-tag">Cubit</span>
+          <span class="skill-tag">GetX</span>
         </div>
       </div>
-      
+
       <div class="skill-category">
-        <h3><i class="fas fa-calculator"></i> Mathematics & Theory</h3>
+        <h3><i class="fas fa-database"></i> Databases & Storage</h3>
         <div class="skill-list">
-          <span class="skill-tag">Linear Algebra</span>
-          <span class="skill-tag">Statistics</span>
-          <span class="skill-tag">Probability Theory</span>
-          <span class="skill-tag">Optimization</span>
-          <span class="skill-tag">Calculus</span>
-          <span class="skill-tag">Information Theory</span>
+          <span class="skill-tag">Microsoft SQL</span>
+          <span class="skill-tag">Hive</span>
+          <span class="skill-tag">Room</span>
+          <span class="skill-tag">Shared Preferences</span>
         </div>
       </div>
-      
+
       <div class="skill-category">
-        <h3><i class="fas fa-tools"></i> Tools & Frameworks</h3>
+        <h3><i class="fas fa-network-wired"></i> Networking & APIs</h3>
         <div class="skill-list">
-          <span class="skill-tag">TensorFlow</span>
-          <span class="skill-tag">PyTorch</span>
-          <span class="skill-tag">Scikit-learn</span>
-          <span class="skill-tag">Pandas</span>
-          <span class="skill-tag">NumPy</span>
-          <span class="skill-tag">Git/GitHub</span>
+          <span class="skill-tag">RESTful APIs</span>
+          <span class="skill-tag">Dio</span>
+          <span class="skill-tag">Retrofit</span>
+          <span class="skill-tag">HTTP</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3><i class="fas fa-cloud"></i> Backend & Cloud Services</h3>
+        <div class="skill-list">
+          <span class="skill-tag">Firebase</span>
+          <span class="skill-tag">Firebase Crashlytics</span>
+          <span class="skill-tag">Firebase Analytics</span>
+          <span class="skill-tag">Push Notifications</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3><i class="fas fa-vial"></i> Testing</h3>
+        <div class="skill-list">
+          <span class="skill-tag">Unit Testing</span>
+          <span class="skill-tag">Widget Testing</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3><i class="fas fa-tools"></i> CI/CD & Tools</h3>
+        <div class="skill-list">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">CI/CD Pipelines</span>
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">SonarQube</span>
         </div>
       </div>
     </div>
@@ -138,34 +243,39 @@
     <h2 class="section-title">Featured Projects</h2>
     <div class="projects-grid">
       <div class="project-card">
-        <h3>AI-Powered Mental Health Chatbot</h3>
-        <p>Developed an intelligent conversational AI system using natural language processing and sentiment analysis to provide mental health support. Implemented with transformer models and deployed with real-time response capabilities.</p>
-        <a href="https://github.com/theoneandtheonlytaghyan/mental_health-chatbot" target="_blank" class="project-link">
-          View Project <i class="fas fa-external-link-alt"></i>
+        <h3>Flowery E-Commerce App</h3>
+        <p>Built a Flutter e-commerce app with real-time order tracking and payment integration. Applied MVI, Clean Architecture, and Cubit for a scalable structure, implementing testing, caching, push notifications, and Firebase analytics.</p>
+        <a href="https://github.com/Elevate-projects/flowery-app" target="_blank" class="project-link">
+          View on GitHub <i class="fab fa-github"></i>
         </a>
       </div>
-      
+
       <div class="project-card">
-        <h3>Interactive Data Analytics Dashboard</h3>
-        <p>Built a comprehensive data visualization platform with real-time analytics, interactive charts, and predictive modeling capabilities. Features advanced filtering, export functionality, and responsive design.</p>
-        <a href="https://github.com/theoneandtheonlytaghyan/data-dashboard" target="_blank" class="project-link">
-          View Project <i class="fas fa-external-link-alt"></i>
+        <h3>Bookly App</h3>
+        <p>Developed a book exploration app using MVVM, Bloc, and Dependency Injection for a modular and testable codebase. Features include book searching, in-app reading, and offline caching with Hive for a smooth, responsive experience.</p>
+        <a href="https://github.com/omarelsadanyy/bookly_app" target="_blank" class="project-link">
+          View on GitHub <i class="fab fa-github"></i>
         </a>
       </div>
-      
+
       <div class="project-card">
-        <h3>Computer Vision Object Detection</h3>
-        <p>Implemented a real-time object detection system using YOLO and OpenCV. Achieved 95% accuracy on custom datasets with optimized inference speed for edge deployment.</p>
-        <a href="#" class="project-link">
-          Coming Soon <i class="fas fa-clock"></i>
-        </a>
+        <h3>Note App</h3>
+        <p>A high-performance note-taking app using Bloc and Hive for efficient offline storage. Users can add, edit, delete, and search notes with custom color options, all within a responsive UI. Available on the Google Play Store.</p>
+        <div class="project-links" style="display: flex; gap: 1rem;">
+          <a href="https://github.com/omarelsadanyy/note_app" target="_blank" class="project-link">
+            View on GitHub <i class="fab fa-github"></i>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.omarelsadany.note_app" target="_blank" class="project-link">
+            View on Play Store <i class="fab fa-google-play"></i>
+          </a>
+        </div>
       </div>
-      
+
       <div class="project-card">
-        <h3>Generative AI Content Platform</h3>
-        <p>Created a multi-modal AI platform capable of generating text, images, and code. Integrated multiple large language models with custom fine-tuning for domain-specific applications.</p>
-        <a href="#" class="project-link">
-          Coming Soon <i class="fas fa-clock"></i>
+        <h3>Chat App</h3>
+        <p>Created a real-time messaging application using Firebase for backend services, including authentication, cloud storage, and data synchronization. Designed with a responsive and user-friendly interface for seamless communication.</p>
+        <a href="https://github.com/omarelsadanyy/chat_app" target="_blank" class="project-link">
+          View on GitHub <i class="fab fa-github"></i>
         </a>
       </div>
     </div>
@@ -180,58 +290,58 @@
           <i class="fas fa-envelope"></i>
           <div>
             <h4>Email</h4>
-            <a href="mailto:abmtaghyan@gmail.com">abmtaghyan@gmail.com</a>
+            <a href="mailto:omarelsadany33@gmail.com">omarelsadany33@gmail.com</a>
           </div>
         </div>
-        
+
         <div class="contact-item">
           <i class="fab fa-linkedin"></i>
           <div>
             <h4>LinkedIn</h4>
-            <a href="https://linkedin.com/in/taghyan" target="_blank">linkedin.com/in/taghyan</a>
+            <a href="https://www.linkedin.com/in/omar-elsaadany-055661179/" target="_blank">linkedin.com/in/omar-elsaadany-055661179</a>
           </div>
         </div>
-        
+
         <div class="contact-item">
           <i class="fab fa-github"></i>
           <div>
             <h4>GitHub</h4>
-            <a href="https://github.com/theoneandtheonlytaghyan" target="_blank">github.com/theoneandtheonlytaghyan</a>
+            <a href="https://github.com/omarelsadanyy" target="_blank">github.com/omarelsadanyy</a>
           </div>
         </div>
-        
+
         <div class="contact-item">
           <i class="fas fa-map-marker-alt"></i>
           <div>
             <h4>Location</h4>
-            <span>Available for Remote Work</span>
+            <span>Available for On-site Work and Remote Work</span>
           </div>
         </div>
       </div>
-      
+
       <div class="contact-form">
         <h3>Send me a message</h3>
-        <form>
+        <form action="https://formspree.io/f/mandbggv" method="POST">
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
           </div>
-          
+
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
           </div>
-          
+
           <div class="form-group">
             <label for="subject">Subject</label>
             <input type="text" id="subject" name="subject" required>
           </div>
-          
+
           <div class="form-group">
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="5" required></textarea>
           </div>
-          
+
           <button type="submit" class="btn btn-primary">Send Message</button>
         </form>
       </div>
@@ -240,13 +350,87 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Abdulrahman Taghyan. Crafted with passion for AI and innovation.</p>
+    <p>© 2025 Omar Elsadany. Crafted with passion for Software Development.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Toast Notification HTML -->
+  <div id="toast-notification">
+    <span id="toast-message"></span>
+    <button id="toast-close">&times;</button>
+  </div>
+
+  <script>
+    const form = document.querySelector('.contact-form form');
+    const toast = document.getElementById('toast-notification');
+    const toastMessage = document.getElementById('toast-message');
+    const toastClose = document.getElementById('toast-close');
+    let toastTimeout;
+
+    // Function to show the toast notification
+    function showToast(message, isError = false) {
+      clearTimeout(toastTimeout); // Clear any existing timer
+
+      toastMessage.textContent = message;
+      if (isError) {
+        toast.classList.add('error');
+      } else {
+        toast.classList.remove('error');
+      }
+
+      toast.classList.add('show');
+
+      // Automatically hide the toast after 5 seconds
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 5000);
+    }
+
+    // Allow user to close the toast manually
+    toastClose.onclick = function() {
+      clearTimeout(toastTimeout);
+      toast.classList.remove('show');
+    }
+
+    // Handle the form submission
+    async function handleSubmit(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const submitButton = form.querySelector('button[type="submit"]');
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+
+      try {
+        const response = await fetch(event.target.action, {
+          method: form.method,
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          showToast("Thank you for your message! I'll get back to you soon.");
+          form.reset();
+        } else {
+          const data = await response.json();
+          let errorMessage = "Oops! There was a problem submitting your form.";
+          if (Object.hasOwn(data, 'errors')) {
+            errorMessage = data["errors"].map(error => error["message"]).join(", ");
+          }
+          showToast(errorMessage, true);
+        }
+      } catch (error) {
+        showToast("Oops! There was a network error.", true);
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Message';
+      }
+    }
+
+    form.addEventListener("submit", handleSubmit);
+  </script>
+
 </body>
+
 </html>
-
-
-
-

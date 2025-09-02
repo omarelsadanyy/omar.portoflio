@@ -1,184 +1,92 @@
-# Abdulrahman Taghyan - Portfolio Website
+# Omar Elsadany - Mobile Developer Portfolio
 
-A modern, professional portfolio website showcasing my expertise in AI, Data Science, and Machine Learning.
+A modern, professional, and responsive portfolio website showcasing my skills and projects as a Mobile Developer, with a focus on Flutter and Android.
 
 ## 🌟 Features
 
-- **Modern Design**: Glassmorphism effects with animated gradients
-- **Responsive**: Fully responsive design that works on all devices
-- **Interactive**: Smooth animations and hover effects
-- **Professional**: Clean, modern layout optimized for showcasing technical skills
-- **Fast Loading**: Optimized performance with efficient CSS and JavaScript
+- **Clean & Modern Design**: A professional layout optimized to highlight technical skills and projects.
+- **Fully Responsive**: Looks great on all devices, from mobile phones to desktops.
+- **Interactive Contact Form**: A seamless, asynchronous contact form that provides instant feedback with a responsive toast notification without reloading the page.
+- **Dynamic Content**: Sections for an introduction, about me, technical skills, featured projects, and contact information.
 
 ## 🛠️ Technologies Used
 
-- **HTML5**: Semantic markup for better accessibility
-- **CSS3**: Modern CSS with custom properties, flexbox, and grid
-- **JavaScript (ES6+)**: Interactive functionality and animations
-- **Font Awesome**: Professional icons
-- **Google Fonts**: Inter font family for modern typography
+- **HTML5**: Semantic and accessible markup.
+- **CSS3**: Custom styling for a modern look and feel, including responsive design with media queries.
+- **JavaScript (ES6+)**: Powers the interactive contact form and toast notifications.
+- **Formspree**: Handles the contact form backend to forward messages to my email.
+- **Font Awesome**: Provides professional icons throughout the site.
+- **Google Fonts**: Uses the "Inter" font family for clean and modern typography.
 
 ## 📁 Project Structure
 
 ```
 portfolio/
 │
-├── index.html          # Main HTML file
-├── style.css           # CSS styles and animations
-├── script.js           # JavaScript functionality
-├── .gitignore         # Git ignore rules
-└── README.md          # Project documentation
+├── index.html          # Main HTML file containing all content, styles, and scripts
+├── style.css           # Main CSS styles for layout and design
+└── README.md           # This documentation file
 ```
 
 ## 🚀 Getting Started
 
-### Prerequisites
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/omarelsadanyy/portfolio.git
+    cd portfolio
+    ```
 
-- A modern web browser
-- Basic text editor (VS Code recommended)
-- Optional: Live server extension for development
+2.  **Open in your browser**
+    Simply open the `index.html` file in your web browser to view the site.
 
-### Installation
+## 🔧 Customization
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/theoneandtheonlytaghyan/portfolio.git
-   cd portfolio
-   ```
+All content can be easily updated by editing the `index.html` file.
 
-2. **Open the project**
-   - Open `index.html` in your browser, or
-   - Use a live server for development
+#### Personal Information & Content
+- **Update Name/Logo**: Change the text in `<div class="logo">Omar Elsadany</div>`.
+- **Update Hero/About Text**: Modify the text in the `#home` and `#about` sections.
+- **Update Profile Picture**: Replace the image URL `https://i.postimg.cc/ZnYCpcgX/IMG-1288.jpg` in the `.hero-image` and `.about-image` divs.
+- **Update Contact Details**: Change the `href` and text for your Email, LinkedIn, and GitHub in the `#contact` section.
 
-### Customization
+#### Skills & Projects
+- **Skills**: Add or remove `<span class="skill-tag">` elements within the `#skills` section.
+- **Projects**: Update the `.project-card` divs in the `#projects` section with your own project details and links.
 
-#### Personal Information
-1. **Update contact information** in `index.html`:
-   ```html
-   <a href="mailto:abmtaghyan@gmail.com">abmtaghyan@gmail.com</a>
-   <a href="https://linkedin.com/in/taghyan">linkedin.com/in/taghyan</a>
-   ```
-
-2. **Add your profile picture**:
-   Replace the Font Awesome icon in the profile section with your image:
-   ```html
-   <div class="profile-image">
-     <img src="[path/to/your/photo.jpg](https://share.google/images/QnWXpRfARytYocl7L)" alt="taghyan">
-   </div>
-   ```
-
-3. **Update project links**:
-   Replace the GitHub links with your actual project repositories.
+#### Contact Form
+- To change the email recipient, create a new form on [Formspree](https://formspree.io/) and replace the URL in the `<form action="...">` attribute.
 
 #### Styling
-- Modify CSS custom properties in `style.css` to change colors:
-  ```css
-  :root {
-    --primary-gradient: linear-gradient(135deg, #your-color 0%, #your-color 100%);
-  }
-  ```
-
-#### Content
-- Update the about section with your personal information
-- Modify skills based on your expertise
-- Add or remove project cards as needed
-
-## 🎨 Design Features
-
-### Color Scheme
-- **Primary**: Purple gradient (#667eea to #764ba2)
-- **Accent**: Pink gradient (#f093fb to #f5576c)
-- **Background**: Dark theme with animated gradients
-- **Text**: High contrast white and gray
-
-### Animations
-- **Background**: Floating gradient animation
-- **Profile**: Rotating border effect
-- **Cards**: Hover animations with transform and glow effects
-- **Scroll**: Smooth reveal animations for sections
-
-### Typography
-- **Font Family**: Inter (Google Fonts)
-- **Hierarchy**: Clear heading structure with proper sizing
-- **Readability**: Optimized line height and spacing
+- General styles can be modified in `style.css`.
+- The toast notification styles are located in the `<style>` block in the `<head>` of `index.html`.
 
 ## 📱 Responsive Design
 
-The website is fully responsive with breakpoints for:
-- **Desktop**: 1200px and above
-- **Tablet**: 768px - 1199px
-- **Mobile**: Below 768px
+The website is built with a mobile-first approach. The toast notification includes a media query to adjust its position based on screen size:
+- **Mobile (and default)**: Appears at the bottom-center.
+- **Desktop (768px and above)**: Appears at the top-right.
 
 ## 🔧 JavaScript Features
 
-- **Smooth Scrolling**: Navigation links with smooth scroll behavior
-- **Header Effects**: Background changes on scroll
-- **Form Validation**: Contact form with validation and notifications
-- **Animations**: Intersection Observer for scroll-triggered animations
-- **Performance**: Throttled scroll events for better performance
+The interactive functionality is handled by a `<script>` tag at the bottom of `index.html`.
+- **Asynchronous Form Submission**: Uses the Fetch API to send form data to Formspree without a page reload.
+- **Toast Notifications**: Displays a success or error message in a pop-up notification after form submission. The notification is responsive and closes automatically.
+- **UI Feedback**: The "Send Message" button is disabled and its text changes to "Sending..." during the submission process.
 
 ## 🚀 Deployment
 
-### GitHub Pages
-1. Push your code to a GitHub repository
-2. Go to repository settings
-3. Enable GitHub Pages from the main branch
-4. Your site will be available at `(https://theoneandtheonlytaghyan.github.io/taghyan.github.io/)`
+This project can be easily deployed on any static site hosting service.
 
-### Netlify
-1. Connect your GitHub repository to Netlify
-2. Deploy automatically on each push
-3. Custom domain support available
-
-### Vercel
-1. Import your GitHub repository
-2. Automatic deployments on commits
-3. Edge network for fast loading
-
-## 🔍 SEO Optimization
-
-- Semantic HTML structure
-- Meta tags for better search engine visibility
-- Optimized images (when added)
-- Fast loading times
-- Mobile-friendly design
-
-## 🛠️ Development
-
-### Local Development
-```bash
-# If using Node.js and live-server
-npm install -g live-server
-live-server
-```
-
-### Code Style
-- Use consistent indentation (2 spaces)
-- Follow semantic HTML practices
-- Keep CSS organized with comments
-- Use modern JavaScript features
+### GitHub Pages (Recommended)
+1. Push your code to a GitHub repository named `your-username.github.io`.
+2. Go to your repository's **Settings** > **Pages**.
+3. Select the `main` branch as the source and click **Save**.
+4. Your site will be live at `https://your-username.github.io/`.
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🤝 Contributing
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+This project is open source. Consider adding a `LICENSE` file and choosing a license like MIT.
 
 ## 📞 Contact
 
-Abdulrahman Taghyan - [abdulrahman.taghyan@gmail.com](mailto:abmtaghyan@gmail.com)
-
-Project Link: [https://github.com/theoneandtheonlytaghyan/portfolio](https://github.com/theoneandtheonlytaghyan/portfolio)
-
-## ⭐ Acknowledgments
-
-- [Font Awesome](https://fontawesome.com/) for icons
-- [Google Fonts](https://fonts.google.com/) for typography
-- [CSS Gradient](https://cssgradient.io/) for gradient inspiration
-- Modern web design trends and best practices
+Omar Elsadany - [omarelsadany33@gmail.com](mailto:omarelsadany33@gmail.com)
